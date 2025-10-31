@@ -30,13 +30,12 @@ jobs:
 
     - name: Run tests
       env:
-        PYTHONPATH: src
-      working-directory: ${{ github.workspace }}
+        PYTHONPATH: ${{ github.workspace }}/src
       run: pytest --junitxml=report.xml
-
 
     - name: Upload test report
       uses: actions/upload-artifact@v4
       with:
         name: test-report-${{ matrix.python-version }}
         path: report.xml
+
